@@ -184,4 +184,13 @@ public class DenreesBean
         } 
         faireRecherche();
     }
+
+    public void addOneDenree(int id) throws StockException{
+        DatabaseStock dir = this.stockBean.getDatabaseStock();
+        Denree denree = dir.getDenree(id) ;
+        int quantity = denree.getQuantity() +1 ;
+        denree.setQuantity(quantity);
+        dir.mAjDenree(denree);
+        faireRecherche();
+    }
 }

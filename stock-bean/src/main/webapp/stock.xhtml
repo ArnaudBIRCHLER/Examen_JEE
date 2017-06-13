@@ -34,6 +34,20 @@
                 <f:facet name="header">Quantité</f:facet>
                 <h:outputText value="#{denree.quantity} " />
             </h:column>
+
+            <h:column>
+                <h:form>
+                    <f:facet name="header">Supprimer </f:facet>
+                    <h:commandButton value="- 1" action="#{denreesBean.removeOneDenree(denree.id)}" />
+                </h:form>
+            </h:column>
+
+            <h:column>
+                <h:form>
+                    <f:facet name="header">Ajouter </f:facet>
+                    <h:commandButton value="+ 1" action="#{denreesBean.addOneDenree(denree.id)}" />
+                </h:form>
+            </h:column>
             
         </h:dataTable>
 
