@@ -112,4 +112,16 @@ public class DenreesBean
         return it;
     }
 
+    public void removeOneDenree(int id) throws StockException{
+        DatabaseStock dir = this.stockBean.getDatabaseStock();
+        Denree denree = dir.getDenree(id) ;
+        int quantity = denree.getQuantity() ;
+        if (quantity>0){
+            denree.setQuantity(quantity - 1);
+            dir.mAjDenree(denree);
+        }
+
+        
+    }
+
 }

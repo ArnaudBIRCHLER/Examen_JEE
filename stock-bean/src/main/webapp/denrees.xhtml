@@ -21,17 +21,27 @@
     <h:dataTable value="#{denreesBean.denrees}" var="denree">
 
         <h:column>
-            <f:facet name="header">ID</f:facet>
-            <h:outputText value="#{denree.id}" />
+            <f:facet name="header">Liste des denrées</f:facet>
+            <h:outputText value="#{denree.nom} " />
         </h:column>
 
         <h:column>
-            <f:facet name="header">Liste des noms</f:facet>
-            <h:outputLink value="denree.faces" >
-                <f:param name="id" value="#{denree.id}"/>
-                <h:outputText value="#{denree.nom} #{denree.categorie}" />
-            </h:outputLink>
+            <f:facet name="header">Catégorie</f:facet>
+            <h:outputText value="#{denree.categorie} " />
         </h:column>
+
+        <h:column>
+            <f:facet name="header">Quantité</f:facet>
+            <h:outputText value="#{denree.quantity} " />
+        </h:column>
+
+        <h:column>
+            <h:form>
+                <f:facet name="header">Supprimer </f:facet>
+                <h:commandButton value="- 1" action="#{denreesBean.removeOneDenree(denree.id)}" />
+            </h:form>
+        </h:column>
+        
 
     </h:dataTable>
 
@@ -47,6 +57,7 @@
     <h:commandLink action="#{denreesBean.goToNextPage()}" disabled="#{!denreesBean.hasNextPage()}">
         <h:outputText value="Suivant"/>
     </h:commandLink>
+
     </h:form>
 
     </p>
