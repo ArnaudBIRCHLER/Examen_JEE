@@ -7,7 +7,6 @@ package fr.aifcc.master.stock_api;
 
 public class Denree extends Item
 {
-
     protected String nom;
     protected String categorie;
     protected int quantity ;
@@ -23,7 +22,6 @@ public class Denree extends Item
         this.quantity = 0 ;
     }
 
-
     /**
      * Retourne le nom (get).
      * @return 
@@ -32,7 +30,6 @@ public class Denree extends Item
     {
         return this.nom;
     }
-
 
     /**
      * Set le nom (set).
@@ -43,7 +40,6 @@ public class Denree extends Item
         this.nom = nom;
     }
 
-
     /**
      * Retourne la catégorie (get).
      * @return 
@@ -52,7 +48,6 @@ public class Denree extends Item
     {
         return this.categorie;
     }
-
 
     /**
      * set la catégorie (set).
@@ -63,7 +58,6 @@ public class Denree extends Item
         this.categorie = categorie;
     }
 
-
     /**
      * Retourne la quantité (get).
      * @return 
@@ -72,7 +66,6 @@ public class Denree extends Item
     {
         return this.quantity;
     }
-
 
     /**
      * set la catégorie (set).
@@ -83,5 +76,4 @@ public class Denree extends Item
     {
         this.quantity = quantity;
     }
-
 }

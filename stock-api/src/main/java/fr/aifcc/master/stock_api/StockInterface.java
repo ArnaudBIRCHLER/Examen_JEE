@@ -11,7 +11,6 @@ import java.util.Collection;
 
 public interface StockInterface
 {
-
     /**
      * Permet de récupérer un ensemble de personnes dans un ordre arbitraire.
      * Le sous-ensemble des personnes à récupérer est donné par les paramètres offset et limit.
@@ -54,5 +53,4 @@ public interface StockInterface
      * Libère les ressources occupées par cette instance d'annuaire
      * */
     public void dispose() throws StockException;
-
 }

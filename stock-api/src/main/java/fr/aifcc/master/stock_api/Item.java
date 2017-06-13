@@ -8,7 +8,6 @@ package fr.aifcc.master.stock_api;
 
 public abstract class Item
 {
-
     /**
      * L'identifiant unique de l'objet
      * */
@@ -32,5 +31,4 @@ public abstract class Item
     {
         this.id = id;
     }
-
 }

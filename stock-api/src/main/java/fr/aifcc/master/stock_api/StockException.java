@@ -6,7 +6,6 @@ package fr.aifcc.master.stock_api;
 
 public class StockException extends Exception
 {
-
     /**
      * Message par défaut de l'exception directory.
      * */
@@ -43,5 +42,4 @@ public class StockException extends Exception
     {
         super( s, t );
     }
-
 }
