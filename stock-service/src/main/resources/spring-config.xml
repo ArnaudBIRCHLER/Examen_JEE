@@ -5,11 +5,11 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.3.xsd" >
 
-    <bean id="controlerPerson" class="fr.aifcc.master.stock_service.ControlerStock" >
+    <bean id="controlerStock" class="fr.aifcc.master.stock_service.ControlerStock" >
         <constructor-arg ref="database" />
     </bean>
 
-    <bean id="database" class="fr.aifcc.master.stock_impl.DataBaseStock" >
+    <bean id="database" class="fr.aifcc.master.stock_impl.DatabaseStock" >
     	<constructor-arg index="0" type="java.lang.String">
     		<value>com.mysql.jdbc.Driver</value>
     	</constructor-arg>
