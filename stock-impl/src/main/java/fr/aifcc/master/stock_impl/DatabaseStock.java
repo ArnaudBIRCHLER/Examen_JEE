@@ -1,9 +1,7 @@
-
 package fr.aifcc.master.stock_impl;
 
 import java.util.*;
 import java.sql.*;
-
 import fr.aifcc.master.stock_api.*;
 
 /**
@@ -13,7 +11,6 @@ import fr.aifcc.master.stock_api.*;
  */
 public class DatabaseStock implements StockInterface    
 {
-
     /**
      * L'objet de connections à la base de données.
      * */
@@ -60,8 +57,8 @@ public class DatabaseStock implements StockInterface
         ResultSet res;
         String requete  = " ";
 
-
-        try{
+        try
+        {
             requete = "SELECT * FROM " + TABLE_NAME +" LIMIT ?,?" ;
 
             PreparedStatement statement = connection.prepareStatement(requete); 
@@ -73,19 +70,20 @@ public class DatabaseStock implements StockInterface
                 res.close();
                 throw new StockException("C'est quoi ce bordel \n Y'a rien dans la base !!!");
             }
-            else {
-                do{
-                    Denree denree = new Denree();
-                    denree.setId(res.getLong(1));
-                    denree.setNom(res.getString(2));
-                    denree.setCategorie(res.getString(3));
-                    denree.setQuantity(res.getInt(4));
-                    denrees.add(denree) ;
-                }
+            else 
+            {
+                do
+                    {
+                        Denree denree = new Denree();
+                        denree.setId(res.getLong(1));
+                        denree.setNom(res.getString(2));
+                        denree.setCategorie(res.getString(3));
+                        denree.setQuantity(res.getInt(4));
+                        denrees.add(denree) ;
+                    }
                 while(res.next());
                 res.close();
             }
-
         }
         catch(SQLException sqlDefault){
             throw new StockException("Tu n'y connais rien en SQL ou quoi ???");
@@ -167,7 +165,6 @@ public class DatabaseStock implements StockInterface
                 + this.QUANTITY + " ) VALUES ( ?, ?, ?, ? )";
             // Une requête doit TOUJOURS être préparé pour éviter les injections SQL.
             PreparedStatement requeteDenree = this.connection.prepareStatement( requete );
-
             
             requeteDenree.setLong( 1, denree.getId() );
             requeteDenree.setString( 2, denree.getNom() );
@@ -183,9 +180,6 @@ public class DatabaseStock implements StockInterface
     }
 
 
-
-
-
     @Override
     public synchronized void dispose()
         throws StockException
@@ -199,5 +193,4 @@ public class DatabaseStock implements StockInterface
             throw new StockException( e );
         }
     }
-
 }

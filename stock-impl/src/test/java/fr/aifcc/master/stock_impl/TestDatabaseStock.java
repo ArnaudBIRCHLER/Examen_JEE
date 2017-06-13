@@ -2,11 +2,8 @@ package fr.aifcc.master.stock_impl;
 
 import java.sql.*;
 import java.util.*;
-
 import fr.aifcc.master.stock_api.*;
-
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -23,6 +20,7 @@ import org.junit.AfterClass;
  * Si la classe hérite c'est junit 3 qui sera utilisé à la place de junit 4 !
  * @author 
  */
+
 public class TestDatabaseStock
 {
 
