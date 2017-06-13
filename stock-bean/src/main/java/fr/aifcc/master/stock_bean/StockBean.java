@@ -1,23 +1,18 @@
-/*
- * Dernière modification : Mercredi 07 juin[06] 2017
- * */
 package fr.aifcc.master.stock_bean;
 
 import javax.faces.bean.*;
-
 import fr.aifcc.master.stock_api.*;
 import fr.aifcc.master.stock_impl.*;
 
 /**
  * Cette classe ne sera jamais instancié manuellement.
  * Toutes ces instanciations seront faites par JSF
- * @author PIVARD Julien
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
 @ManagedBean( name = "stockBean" )
-@ApplicationScoped          // L'application est instancié dés que l'app est lancée
+@ApplicationScoped // L'application est instancié dés que l'app est lancée
 public class StockBean
 {
-
     private final DatabaseStock database;
 
     private static final String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
@@ -41,5 +36,4 @@ public class StockBean
     {
         return this.database;
     }
-
 }

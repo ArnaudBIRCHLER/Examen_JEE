@@ -14,54 +14,49 @@
     </title>
 </h:head>
 <h:body>
-<f:view>
+    <f:view>
 
-    <h1>Denrées</h1>
+        <h1>Denrées</h1>
+        <h:dataTable value="#{denreesBean.denrees}" var="denree">
 
-    <h:dataTable value="#{denreesBean.denrees}" var="denree">
+            <h:column>
+                <f:facet name="header">Liste des denrées</f:facet>
+                <h:outputText value="#{denree.nom} " />
+            </h:column>
 
-        <h:column>
-            <f:facet name="header">Liste des denrées</f:facet>
-            <h:outputText value="#{denree.nom} " />
-        </h:column>
+            <h:column>
+                <f:facet name="header">Catégorie</f:facet>
+                <h:outputText value="#{denree.categorie} " />
+            </h:column>
 
-        <h:column>
-            <f:facet name="header">Catégorie</f:facet>
-            <h:outputText value="#{denree.categorie} " />
-        </h:column>
+            <h:column>
+                <f:facet name="header">Quantité</f:facet>
+                <h:outputText value="#{denree.quantity} " />
+            </h:column>
 
-        <h:column>
-            <f:facet name="header">Quantité</f:facet>
-            <h:outputText value="#{denree.quantity} " />
-        </h:column>
+            <h:column>
+                <h:form>
+                    <f:facet name="header">Supprimer </f:facet>
+                    <h:commandButton value="- 1" action="#{denreesBean.removeOneDenree(denree.id)}" />
+                </h:form>
+            </h:column>
+            
+        </h:dataTable>
 
-        <h:column>
+        <p>
             <h:form>
-                <f:facet name="header">Supprimer </f:facet>
-                <h:commandButton value="- 1" action="#{denreesBean.removeOneDenree(denree.id)}" />
+                <h:commandLink action="#{denreesBean.goToPreviousPage()}" disabled="#{!denreesBean.hasPreviousPage()}">
+                    <h:outputText value="Précédent"/>
+                </h:commandLink>
+
+                <h:outputText value=" - "/>
+
+                <h:commandLink action="#{denreesBean.goToNextPage()}" disabled="#{!denreesBean.hasNextPage()}">
+                    <h:outputText value="Suivant"/>
+                </h:commandLink>
             </h:form>
-        </h:column>
-        
+        </p>
 
-    </h:dataTable>
-
-    <p>
-
-    <h:form>
-    <h:commandLink action="#{denreesBean.goToPreviousPage()}" disabled="#{!denreesBean.hasPreviousPage()}">
-        <h:outputText value="Précédent"/>
-    </h:commandLink>
-
-    <h:outputText value=" - "/>
-
-    <h:commandLink action="#{denreesBean.goToNextPage()}" disabled="#{!denreesBean.hasNextPage()}">
-        <h:outputText value="Suivant"/>
-    </h:commandLink>
-
-    </h:form>
-
-    </p>
-
-</f:view>
+    </f:view>
 </h:body>
 </html>
