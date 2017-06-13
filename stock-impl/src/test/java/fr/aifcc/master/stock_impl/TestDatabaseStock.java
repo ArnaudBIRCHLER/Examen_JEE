@@ -2,11 +2,8 @@ package fr.aifcc.master.stock_impl;
 
 import java.sql.*;
 import java.util.*;
-
 import fr.aifcc.master.stock_api.*;
-
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -21,11 +18,11 @@ import org.junit.AfterClass;
  * de test devrait toutes commencer par « test ».
  *
  * Si la classe hérite c'est junit 3 qui sera utilisé à la place de junit 4 !
- * @author 
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
+
 public class TestDatabaseStock
 {
-
     protected static Connection connection;
     protected DatabaseStock database;
 
@@ -61,7 +58,6 @@ public class TestDatabaseStock
         this.database = new DatabaseStock(DRIVER_MYSQL, URL_MYSQL,USER_MYSQL,USER_MYSQL_PASSWORD);
     }
 
-
     /**
      * Cette annotation n'est disponible que en junit 4
      *
@@ -80,7 +76,6 @@ public class TestDatabaseStock
         connection.close();
     }
 
-
     /**
      * Cette méthode sera exécutée après CHAQUE test unitaire.
      * */
@@ -91,7 +86,6 @@ public class TestDatabaseStock
         this.database.dispose();
         this.database = null;
     }
-
 
     @Test
     public void testCoca() throws Exception {
@@ -175,5 +169,4 @@ public class TestDatabaseStock
         insert.setLong( 1, id );
         insert.executeUpdate();
     }
-
 }

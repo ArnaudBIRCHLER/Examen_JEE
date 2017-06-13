@@ -1,19 +1,17 @@
-
 package fr.aifcc.master.stock_impl;
 
 import java.util.*;
 import java.sql.*;
-
 import fr.aifcc.master.stock_api.*;
 
 /**
  * Implémentation concrète de la classe d'accès aux données.
  * La technologie de stockage choisie est une base de données classique.
- * @author PIVARD Julien
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
+
 public class DatabaseStock implements StockInterface    
 {
-
     /**
      * L'objet de connections à la base de données.
      * */
@@ -32,7 +30,6 @@ public class DatabaseStock implements StockInterface
     private final String CATEGORTIE = "categorie";
     private final String QUANTITY = "quantite";
 
-
     /**
      * Initialise une connexion à la base de données
      * @param driverClass
@@ -40,28 +37,33 @@ public class DatabaseStock implements StockInterface
      * @param databaseURL
      * l'URL vers la base de données.
      * */
-    public DatabaseStock(String driverClass, String dataBaseUrl, String user, String pswd) throws StockException{
-        try{
+
+    public DatabaseStock(String driverClass, String dataBaseUrl, String user, String pswd) throws StockException
+    {
+        try
+        {
             Class.forName(driverClass);
             this.connection = DriverManager.getConnection(dataBaseUrl, user, pswd);     
         }
-        catch(ClassNotFoundException notFound){
+        catch(ClassNotFoundException notFound)
+        {
             throw new StockException("Le driver de connexion n'existe pas !!!");
         }
-        catch(SQLException sqlDefault){
+        catch(SQLException sqlDefault)
+        {
             throw new StockException("Tu n'y connais rien en SQL ou quoi ???");
         }
     }
 
     @Override
-    public synchronized Collection<Denree> getListeDenree( long offset, long limit ) throws StockException{
-
+    public synchronized Collection<Denree> getListeDenree( long offset, long limit ) throws StockException
+    {
         Collection<Denree> denrees =  new ArrayList<Denree>() ;
         ResultSet res;
         String requete  = " ";
 
-
-        try{
+        try
+        {
             requete = "SELECT * FROM " + TABLE_NAME +" LIMIT ?,?" ;
 
             PreparedStatement statement = connection.prepareStatement(requete); 
@@ -73,31 +75,34 @@ public class DatabaseStock implements StockInterface
                 res.close();
                 throw new StockException("C'est quoi ce bordel \n Y'a rien dans la base !!!");
             }
-            else {
-                do{
-                    Denree denree = new Denree();
-                    denree.setId(res.getLong(1));
-                    denree.setNom(res.getString(2));
-                    denree.setCategorie(res.getString(3));
-                    denree.setQuantity(res.getInt(4));
-                    denrees.add(denree) ;
-                }
+            else 
+            {
+                do
+                    {
+                        Denree denree = new Denree();
+                        denree.setId(res.getLong(1));
+                        denree.setNom(res.getString(2));
+                        denree.setCategorie(res.getString(3));
+                        denree.setQuantity(res.getInt(4));
+                        denrees.add(denree) ;
+                    }
                 while(res.next());
                 res.close();
             }
-
         }
-        catch(SQLException sqlDefault){
+        catch(SQLException sqlDefault)
+        {
             throw new StockException("Tu n'y connais rien en SQL ou quoi ???");
         }
-
         return denrees ;
     }
 
     @Override
-    public synchronized Denree getDenree( long id ) throws StockException{
+    public synchronized Denree getDenree( long id ) throws StockException
+    {
         ResultSet res;
-        try{
+        try
+        {
             String requete = "SELECT * FROM " + TABLE_NAME +" WHERE ID=?";      
             PreparedStatement statement = connection.prepareStatement(requete);
             statement.setLong(1,id);
@@ -105,15 +110,18 @@ public class DatabaseStock implements StockInterface
             res = statement.executeQuery();
             int taille = res.getFetchSize();
 
-            if(!res.next()){
+            if(!res.next())
+            {
                 res.close();
                 throw new StockException("C'est quoi ce bordel \n Y'a rien dans la base !!!");
             }
-            else if(taille != 0){
+            else if(taille != 0)
+            {
                 res.close();
                 throw new StockException("C'est quoi ce bordel \n Y'a trop d'éléments !!!");
             }
-            else {
+            else 
+            {
                 Denree denree = new Denree();
                 denree.setId(res.getLong(1));
                 denree.setNom(res.getString(2));
@@ -123,14 +131,15 @@ public class DatabaseStock implements StockInterface
                 return denree ;
             }
         }
-        catch(SQLException sqlDefault){
+        catch(SQLException sqlDefault)
+        {
             throw new StockException("Tu n'y connais rien en SQL ou quoi ???");
-
         }
     }
 
     @Override
-    public synchronized void mAjDenree( Denree denree ) throws StockException{
+    public synchronized void mAjDenree( Denree denree ) throws StockException
+    {
         try
         {
             String requete = "UPDATE " + this.TABLE_NAME + " SET "
@@ -155,9 +164,9 @@ public class DatabaseStock implements StockInterface
         }
     }
 
-
     @Override
-    public synchronized void ajouterDenree( Denree denree ) throws StockException{
+    public synchronized void ajouterDenree( Denree denree ) throws StockException
+    {
         try
         {
             String requete = "INSERT INTO " + this.TABLE_NAME + " ( "
@@ -167,7 +176,6 @@ public class DatabaseStock implements StockInterface
                 + this.QUANTITY + " ) VALUES ( ?, ?, ?, ? )";
             // Une requête doit TOUJOURS être préparé pour éviter les injections SQL.
             PreparedStatement requeteDenree = this.connection.prepareStatement( requete );
-
             
             requeteDenree.setLong( 1, denree.getId() );
             requeteDenree.setString( 2, denree.getNom() );
@@ -182,13 +190,8 @@ public class DatabaseStock implements StockInterface
         }
     }
 
-
-
-
-
     @Override
-    public synchronized void dispose()
-        throws StockException
+    public synchronized void dispose() throws StockException
     {
         try
         {
@@ -199,5 +202,4 @@ public class DatabaseStock implements StockInterface
             throw new StockException( e );
         }
     }
-
 }
