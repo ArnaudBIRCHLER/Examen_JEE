@@ -68,8 +68,6 @@ public class TestDatabaseStock
     public static void tearDownClass()
         throws SQLException
     {
-
-
         supprimerDenree(1);
         supprimerDenree(2);
         supprimerDenree(3);
@@ -95,7 +93,6 @@ public class TestDatabaseStock
         assertEquals("Erreur ce n'est pas la Denree attendue " , 100, denree.getQuantity());
     }
 
-
     @Test
     public void testCafe() throws Exception {
         Denree denree = database.getDenree(2); 
@@ -104,15 +101,12 @@ public class TestDatabaseStock
         assertEquals("Erreur ce n'est pas la Denree attendue " , 200, denree.getQuantity());
     }
 
-
-
     @Test
     public void testNbDenree() throws Exception {
         Collection<Denree> denrees =  new ArrayList<Denree>() ;
         denrees = database.getListeDenree(0,2); 
         assertEquals("Erreur ce n'est pas le nombre de  Denree attendue " , 2, denrees.size());
     }
-
 
     @Test
     public void testAjoutDenree() throws Exception {
@@ -129,9 +123,6 @@ public class TestDatabaseStock
         assertEquals("Erreur ce n'est pas la Denree attendue " , denreeTest.getQuantity(), denree.getQuantity());
     }
 
-
-
-
     @Test
     public void testUpdateDenree() throws Exception {
         Denree denreeTest = database.getDenree(2); 
@@ -145,7 +136,6 @@ public class TestDatabaseStock
         assertEquals("Erreur ce n'est pas la Denree attendue " , "Boisson", denreeTest.getCategorie());
         assertEquals("Erreur ce n'est pas la Denree attendue " , 200, denreeTest.getQuantity());
     }
-
 
     public static void insererDenree( long id, String nom, String categorie, int quantite )
         throws SQLException
