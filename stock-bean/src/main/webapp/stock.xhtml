@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE html>
+
+<html lang='fr'
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h='http://java.sun.com/jsf/html'
+    >
+
+<h:head>
+    <title>
+        
+    </title>
+</h:head>
+<h:body>
+    <f:view>
+
+        <h1>Stock denrées</h1>
+
+        <h:dataTable value="#{denreesBean.denrees}" var="denree">
+
+            <h:column>
+                <f:facet name="header">Liste des denrées</f:facet>
+                <h:outputText value="#{denree.nom} " />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Catégorie</f:facet>
+                <h:outputText value="#{denree.categorie} " />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Quantité</f:facet>
+                <h:outputText value="#{denree.quantity} " />
+            </h:column>
+            
+        </h:dataTable>
+
+        <p>
+            <h:form>
+                <h:commandLink action="#{denreesBean.goToPreviousPage()}" disabled="#{!denreesBean.hasPreviousPage()}">
+                    <h:outputText value="Précédent"/>
+                </h:commandLink>
+
+                <h:outputText value=" - "/>
+
+                <h:commandLink action="#{denreesBean.goToNextPage()}" disabled="#{!denreesBean.hasNextPage()}">
+                    <h:outputText value="Suivant"/>
+                </h:commandLink>
+            </h:form>
+        </p>
+
+
+
+        <h2>Ajouter une nouvelle denrées</h2>
+        <h:form>
+        <ul>
+            <li>
+                <h:outputLabel id="champNom" for="nomID" value="Nom : " />
+                <h:inputText id="nomID" value="#{denreeBean.denree.nom}" />
+            </li>
+            <li>
+                <h:outputLabel id="champCat" for="catID" value="Categorie : " />
+                <h:inputText id="ncatID" value="#{denreeBean.denree.categorie}" />
+            </li>
+            <li>
+                <h:outputLabel id="champQuant" for="quantID" value="Quantité : " />
+                <h:inputText id="quantID" value="#{denreeBean.denree.quantity}" />
+            </li>
+        </ul>
+        <h:commandButton value="Ajouter denree" action="#{denreeBean.saveDenree()}" />
+        </h:form>
+
+</f:view>
+</h:body>
+</html>

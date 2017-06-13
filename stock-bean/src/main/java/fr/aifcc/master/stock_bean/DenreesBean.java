@@ -133,7 +133,8 @@ public class DenreesBean
     public void faireRecherche()
         throws StockException
     {
-        this.resultatRecherche = this.stockBean.getDatabaseStock().getDenreeRecherche( this.chaineRecherche );
+        if(!this.chaineRecherche.equals(""))
+            this.resultatRecherche = this.stockBean.getDatabaseStock().getDenreeRecherche( this.chaineRecherche );
     }
 
     /**
@@ -181,5 +182,6 @@ public class DenreesBean
             denree.setQuantity(quantity - 1);
             dir.mAjDenree(denree);
         } 
+        faireRecherche();
     }
 }

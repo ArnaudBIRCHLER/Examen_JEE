@@ -17,6 +17,10 @@
     <f:view>
 
         <h1>Denrées</h1>
+        <h:outputLink value="stock.faces" >
+                <h:outputText value= "Gestion de stock" />
+        </h:outputLink>
+
         <h:dataTable value="#{denreesBean.denrees}" var="denree">
 
             <h:column>
@@ -71,7 +75,7 @@
 
 <h:outputText value="Aucun résultats pour la recherche" rendered="#{denreesBean.tailleResultat eq 0}" />
 <h:dataTable value="#{denreesBean.resultatRecherche}" var="denree" rendered="#{denreesBean.tailleResultat gt 0}" >
- <h:column>
+        <h:column>
             <f:facet name="header">Liste des denrées</f:facet>
             <h:outputText value="#{denree.nom} " />
         </h:column>
@@ -85,6 +89,7 @@
             <f:facet name="header">Quantité</f:facet>
             <h:outputText value="#{denree.quantity} " />
         </h:column>
+
 
         <h:column>
             <h:form>

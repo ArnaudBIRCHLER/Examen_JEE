@@ -210,7 +210,9 @@ public class DatabaseStock implements StockInterface
 
             while ( resultats.next() )
             {
-                denrees.add( getDenree( resultats.getLong( 1 ) ) );
+                Denree denree = getDenree( resultats.getLong( 1 ) ) ;
+                if(denree.getQuantity()>0)
+                    denrees.add( denree );
             }
             resultats.close();
 
