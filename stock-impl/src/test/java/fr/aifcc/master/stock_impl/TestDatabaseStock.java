@@ -43,10 +43,11 @@ public class TestDatabaseStock
         throws Exception
     {
         Class.forName( DRIVER_MYSQL );
-        connection = DriverManager.getConnection(URL_MYSQL,USER_MYSQL,USER_MYSQL_PASSWORD);
+        connection = DriverManager.getConnection(URL_MYSQL,USER_MYSQL,USER_MYSQL_PASSWORD); 
 
+        
         insererDenree( 1, "Coca-cola", "Boisson", 100 );
-        insererDenree( 2, "Café", "Boisson", 200 );
+        insererDenree( 2, "Cafe", "Boisson", 200 );
     }
 
     /**
@@ -86,6 +87,11 @@ public class TestDatabaseStock
         this.database = null;
     }
 
+
+    @Test
+    public void getOnePerson() throws Exception {
+        System.out.println( ">>>>>>>>>>>>>> TEST <<<<<<<<<<<<<" );
+    }
 
     public static void insererDenree( long id, String nom, String categorie, int quantite )
         throws SQLException
