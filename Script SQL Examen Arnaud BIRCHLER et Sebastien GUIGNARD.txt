@@ -1,0 +1,51 @@
+/* Base principale de Dev */
+
+-- /!\ Creer manuellement dans MySql la base : exam_jee en utf8_general_ci /!\
+
+-- Copier/coller les scripts de 1 à 3 suivants 
+
+-- 1 Création de la table Denree
+CREATE TABLE `exam_jee`.`Denree` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(255) NOT NULL,
+  `categorie` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`));
+
+-- 2 Ajout d'une nouvelle colonne pour la quantité
+ALTER TABLE `exam_jee`.`Denree`
+ADD COLUMN `quantite` INT NOT NULL AFTER `categorie`;
+
+-- 3 Insertion de données de base dans la table Denree
+INSERT INTO Denree ( nom, categorie, quantite ) VALUES
+( 'CocaNasson'                  , 'Boisson', 10 ),
+( 'OrangiFruits'                , 'Boisson', 8 ),
+( 'Slurm'                       , 'Boisson', 1 ),
+( 'SoleilVert Cola'             , 'Boisson', 6),
+( 'Old Fortran'                 , 'Boisson alcoolisé', 10 ),
+( 'Chips Glagnard à lhumain'    , 'En-Cas', 20 ),
+( 'Popplers'                    , 'En-Cas', 25 ),
+( 'Amiral Crunch'               , 'En-Cas', 7 ),
+( 'Pamplemouse beaconisé'       , 'En-Cas', 9 ),
+( 'Sandwich jambon beurre'      , 'En-Cas', 9 ),
+( 'Burger'                      , 'En-Cas', 12 ),
+( 'Thorax insect géant de mars' , 'En-Cas', 2 );
+
+=============================================================================
+
+-- /!\ Creer manuellement dans MySql la base : exam_jee_test en utf8_general_ci /!\
+
+-- Copier/coller les scripts de 1 à 2 suivants 
+
+/* Base de test */
+-- 1 Création de la table Denree
+CREATE TABLE `exam_jee_test`.`Denree` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(255) NOT NULL,
+  `categorie` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`));
+
+-- 2 Ajout d'une nouvelle colonne pour la quantité
+ALTER TABLE `exam_jee_test`.`Denree`
+ADD COLUMN `quantite` INT NOT NULL AFTER `categorie`;
+
+=============================================================================
