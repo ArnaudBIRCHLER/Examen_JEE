@@ -120,7 +120,6 @@ public class DenreesBean
             denree.setQuantity(quantity - 1);
             dir.mAjDenree(denree);
         }
-
         
     }
 

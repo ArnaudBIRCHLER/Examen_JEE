@@ -126,13 +126,13 @@ public class TestDatabaseStock
     @Test
     public void testUpdateDenree() throws Exception {
         Denree denreeTest = database.getDenree(2); 
-        denreeTest.setNom("Thé");
+        denreeTest.setNom("The");
         database.mAjDenree(denreeTest);
 
         denreeTest = null ;
 
         denreeTest = database.getDenree(2);
-        assertEquals("Erreur ce n'est pas la Denree attendue " , "Thé", denreeTest.getNom());
+        assertEquals("Erreur ce n'est pas la Denree attendue " , "The", denreeTest.getNom());
         assertEquals("Erreur ce n'est pas la Denree attendue " , "Boisson", denreeTest.getCategorie());
         assertEquals("Erreur ce n'est pas la Denree attendue " , 200, denreeTest.getQuantity());
     }
