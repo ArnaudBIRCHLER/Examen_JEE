@@ -62,6 +62,43 @@
 
     </p>
 
+
+    <h2>Rechercher une denree</h2>
+<h:form>
+    <h:outputLabel id="champNom" for="nomIDRecherche" value="Recherche : " />
+    <h:inputText id="nomIDRecherche" value="#{denreesBean.chaineRecherche}" />
+    <h:commandButton value="Rechercher" action="#{denreesBean.faireRecherche()}" />
+</h:form>
+
+<h2>
+    <h:outputText value="Résultat recherche" rendered="#{denreesBean.tailleResultat ge 0}"/>
+</h2>
+
+<h:outputText value="Aucun résultats pour la recherche" rendered="#{denreesBean.tailleResultat eq 0}" />
+<h:dataTable value="#{denreesBean.resultatRecherche}" var="denree" rendered="#{denreesBean.tailleResultat gt 0}" >
+ <h:column>
+            <f:facet name="header">Liste des denrées</f:facet>
+            <h:outputText value="#{denree.nom} " />
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Catégorie</f:facet>
+            <h:outputText value="#{denree.categorie} " />
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Quantité</f:facet>
+            <h:outputText value="#{denree.quantity} " />
+        </h:column>
+
+        <h:column>
+            <h:form>
+                <f:facet name="header">Supprimer </f:facet>
+                <h:commandButton value="- 1" action="#{denreesBean.removeOneDenree(denree.id)}" />
+            </h:form>
+        </h:column>
+</h:dataTable>
+
 </f:view>
 </h:body>
 </html>

@@ -49,6 +49,10 @@ public interface StockInterface
      * */
     public void ajouterDenree( Denree denree ) throws StockException;
 
+
+
+    public Collection<Denree> getDenreeRecherche(String denreeName) throws StockException;
+
     /**
      * Libère les ressources occupées par cette instance d'annuaire
      * */

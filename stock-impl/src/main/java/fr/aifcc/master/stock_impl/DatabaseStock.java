@@ -191,6 +191,40 @@ public class DatabaseStock implements StockInterface
     }
 
     @Override
+    public synchronized Collection<Denree> getDenreeRecherche(String denreeName) throws StockException{
+        try
+        {
+
+            ResultSet resultats;
+
+            String requete = "SELECT * FROM " + TABLE_NAME
+                + " WHERE " + NAME + " LIKE ?  ";
+            // Une requête doit TOUJOURS être préparé pour éviter les injections SQL.
+            PreparedStatement requetePrepare = this.connection.prepareStatement( requete );
+
+            requetePrepare.setString( 1, denreeName+"%" );
+
+            resultats = requetePrepare.executeQuery();
+
+            Collection<Denree> denrees = new LinkedList<>();
+
+            while ( resultats.next() )
+            {
+                denrees.add( getDenree( resultats.getLong( 1 ) ) );
+            }
+            resultats.close();
+
+            return denrees;
+
+        }
+        catch ( SQLException e )
+        {
+            throw new StockException( "La récupération du résultat de la"
+                    + " recherche des denrees à échoué.\n" + e.getMessage() );
+        }
+    }
+
+    @Override
     public synchronized void dispose() throws StockException
     {
         try

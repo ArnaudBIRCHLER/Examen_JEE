@@ -15,6 +15,7 @@ import fr.aifcc.master.stock_impl.*;
 public class DenreesBean
 {
 
+
     /**
      * L'instance d'application directory bean sera injecté directement par JSF
      * */
@@ -35,6 +36,18 @@ public class DenreesBean
      * Une page suivante est disponible.
      * */
     private boolean pageSuivante = false;
+
+        /**
+     * La chaine de la recherche faites par l'utilisateur.
+     * On le garde en mémoire pour pouvoir l'afficher après le
+     * rechargement de la page dans le champs de recherche.
+     * */
+    private String chaineRecherche = "";
+
+    /**
+     * Le résultat de la recherche.
+     * */
+    private Collection<Denree> resultatRecherche = null;
 
     /**
      * Constructeur sans arguments conforme à la norme java bean
@@ -96,6 +109,56 @@ public class DenreesBean
         return this.pageSuivante;
     }
 
+
+    /**
+     * @return La recherche effectué par l'utilisateur.
+     * */
+    public String getChaineRecherche()
+    {
+        return this.chaineRecherche;
+    }
+
+    /**
+     * @param chaine
+     * La recherche que fait l'utilisateur.
+     * */
+    public void setChaineRecherche( String chaine )
+    {
+        this.chaineRecherche = chaine;
+    }
+
+    /**
+     * Permet d'exécuter la recherche demandé par l'utilisateur.
+     * @throws DirectoryException
+     * Un problème c'est produit lors de la récupération des données.
+     * */
+    public void faireRecherche()
+        throws StockException
+    {
+        this.resultatRecherche = this.stockBean.getDatabaseStock().getDenreeRecherche( this.chaineRecherche );
+    }
+
+    /**
+     * @return La liste des personnes qui correspondent aux résultats de recherche.
+     * */
+    public Collection<Denree> getResultatRecherche()
+    {
+
+        return this.resultatRecherche;
+    }
+
+    /**
+     * @return Le nombre de résultats dans la recherche.
+     * */
+    public int getTailleResultat()
+    {
+        if ( this.resultatRecherche == null )
+        {
+            return -1;
+        }
+        return this.resultatRecherche.size();
+    }
+    
     /**
      * Le nombre de personnes maximum qui sera retourné dépend de la limite de
      * résultats par pages.
