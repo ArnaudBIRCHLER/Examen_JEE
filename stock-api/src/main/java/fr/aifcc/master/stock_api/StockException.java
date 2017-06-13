@@ -1,11 +1,11 @@
 package fr.aifcc.master.stock_api;
 
 /**
- * @author PIVARD Julien
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
+
 public class StockException extends Exception
 {
-
     /**
      * Message par défaut de l'exception directory.
      * */
@@ -15,8 +15,8 @@ public class StockException extends Exception
     }
 
     /**
-     * @param s
      * Le message personnalisé de l'exception.
+     * @param s
      * */
     public StockException( String s )
     {
@@ -24,8 +24,8 @@ public class StockException extends Exception
     }
 
     /**
-     * @param t
      * L'exception levé à encapsuler à l'intérieur.
+     * @param t
      * */
     public StockException( Throwable t )
     {
@@ -33,14 +33,13 @@ public class StockException extends Exception
     }
 
     /**
-     * @param s
      * Le message personnalisé de l'exception.
-     * @param t
+     * @param s
      * Une exception déjà levée.
+     * @param t
      * */
     public StockException( String s, Throwable t )
     {
         super( s, t );
     }
-
 }

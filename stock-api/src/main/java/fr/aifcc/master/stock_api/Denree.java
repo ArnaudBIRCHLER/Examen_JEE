@@ -1,12 +1,12 @@
 package fr.aifcc.master.stock_api;
 
 /**
- * Représente une denree stocké dans la base de données
- * @author 
+ * Représente une denree stockée dans la base de données
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
+
 public class Denree extends Item
 {
-
     protected String nom;
     protected String categorie;
     protected int quantity ;
@@ -23,6 +23,7 @@ public class Denree extends Item
     }
 
     /**
+     * Retourne le nom (get).
      * @return 
      * */
     public String getNom()
@@ -31,7 +32,8 @@ public class Denree extends Item
     }
 
     /**
-     * @param 
+     * Set le nom (set).
+     * @param nom
      * */
     public void setNom( String nom )
     {
@@ -39,6 +41,7 @@ public class Denree extends Item
     }
 
     /**
+     * Retourne la catégorie (get).
      * @return 
      * */
     public String getCategorie()
@@ -47,17 +50,16 @@ public class Denree extends Item
     }
 
     /**
+     * set la catégorie (set).
      * @param categorie
-     * 
      * */
     public void setCategorie( String categorie )
     {
         this.categorie = categorie;
     }
 
-
-
     /**
+     * Retourne la quantité (get).
      * @return 
      * */
     public int getQuantity()
@@ -66,6 +68,7 @@ public class Denree extends Item
     }
 
     /**
+     * set la catégorie (set).
      * @param quantity
      * 
      * */
@@ -73,5 +76,4 @@ public class Denree extends Item
     {
         this.quantity = quantity;
     }
-
 }

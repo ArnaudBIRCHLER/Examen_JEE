@@ -16,6 +16,8 @@ ALTER TABLE `exam_jee`.`Denree`
 ADD COLUMN `quantite` INT NOT NULL AFTER `categorie`;
 
 -- 3 Insertion de données de base dans la table Denree
+-- /!\ selectionner manuellement la table Denree pour faire les inserts /!\
+
 INSERT INTO Denree ( nom, categorie, quantite ) VALUES
 ( 'CocaNasson'                  , 'Boisson', 10 ),
 ( 'OrangiFruits'                , 'Boisson', 8 ),

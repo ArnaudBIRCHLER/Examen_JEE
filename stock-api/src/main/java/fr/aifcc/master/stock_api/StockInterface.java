@@ -6,11 +6,11 @@ import java.util.Collection;
  * Interface de gestion des accès aux données.
  * Permet d'abstraire la couche d'accès aux données pour ne pas dépendre
  * d'un type de stockage en particulier.
- * @author PIVARD Julien
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
+
 public interface StockInterface
 {
-
     /**
      * Permet de récupérer un ensemble de personnes dans un ordre arbitraire.
      * Le sous-ensemble des personnes à récupérer est donné par les paramètres offset et limit.
@@ -53,5 +53,4 @@ public interface StockInterface
      * Libère les ressources occupées par cette instance d'annuaire
      * */
     public void dispose() throws StockException;
-
 }
