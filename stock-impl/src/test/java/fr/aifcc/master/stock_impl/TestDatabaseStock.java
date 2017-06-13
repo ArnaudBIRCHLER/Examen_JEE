@@ -18,12 +18,11 @@ import org.junit.AfterClass;
  * de test devrait toutes commencer par « test ».
  *
  * Si la classe hérite c'est junit 3 qui sera utilisé à la place de junit 4 !
- * @author 
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
 
 public class TestDatabaseStock
 {
-
     protected static Connection connection;
     protected DatabaseStock database;
 
@@ -45,7 +44,6 @@ public class TestDatabaseStock
         Class.forName( DRIVER_MYSQL );
         connection = DriverManager.getConnection(URL_MYSQL,USER_MYSQL,USER_MYSQL_PASSWORD); 
 
-        
         insererDenree( 1, "Coca-cola", "Boisson", 100 );
         insererDenree( 2, "Cafe", "Boisson", 200 );
     }
@@ -60,7 +58,6 @@ public class TestDatabaseStock
         this.database = new DatabaseStock(DRIVER_MYSQL, URL_MYSQL,USER_MYSQL,USER_MYSQL_PASSWORD);
     }
 
-
     /**
      * Cette annotation n'est disponible que en junit 4
      *
@@ -71,10 +68,8 @@ public class TestDatabaseStock
     public static void tearDownClass()
         throws SQLException
     {
-
         connection.close();
     }
-
 
     /**
      * Cette méthode sera exécutée après CHAQUE test unitaire.
@@ -86,7 +81,6 @@ public class TestDatabaseStock
         this.database.dispose();
         this.database = null;
     }
-
 
     @Test
     public void getOnePerson() throws Exception {
@@ -115,5 +109,4 @@ public class TestDatabaseStock
         insert.setLong( 1, id );
         insert.executeUpdate();
     }
-
 }
