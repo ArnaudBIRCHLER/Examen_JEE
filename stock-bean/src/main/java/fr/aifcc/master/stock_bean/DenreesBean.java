@@ -2,19 +2,17 @@ package fr.aifcc.master.stock_bean;
 
 import java.util.*;
 import javax.faces.bean.*;
-
 import fr.aifcc.master.stock_api.*;
 import fr.aifcc.master.stock_impl.*;
 
 /**
  * Lien entre la partie métier et la page web.
- * @author PIVARD Julien
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
 @ManagedBean( name = "denreesBean" )
 @ViewScoped         // Tant qu'on reste sur la même page cette instance n'est pas déchargé de la mémoire
 public class DenreesBean
 {
-
 
     /**
      * L'instance d'application directory bean sera injecté directement par JSF
@@ -182,8 +180,6 @@ public class DenreesBean
         if (quantity>0){
             denree.setQuantity(quantity - 1);
             dir.mAjDenree(denree);
-        }
-        
+        } 
     }
-
 }
