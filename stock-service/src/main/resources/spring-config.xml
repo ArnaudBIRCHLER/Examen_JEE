@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd" >
+
+    <bean id="controlerPerson" class="fr.aifcc.master.stock_service.ControlerStock" >
+        <constructor-arg ref="database" />
+    </bean>
+
+    <bean id="database" class="fr.aifcc.master.stock_impl.DataBaseStock" >
+    	<constructor-arg index="0" type="java.lang.String">
+    		<value>com.mysql.jdbc.Driver</value>
+    	</constructor-arg>
+    	<constructor-arg index="1" type="java.lang.String">
+    		<value>jdbc:mysql://localhost:3306/exam_jee</value>
+    	</constructor-arg>
+    	<constructor-arg index="2" type="java.lang.String">
+    		<value>root</value>
+    	</constructor-arg>
+    	<constructor-arg index="3" type="java.lang.String">
+    		<value></value>
+    	</constructor-arg>
+    </bean>
+
+</beans>
