@@ -3,8 +3,9 @@ package fr.aifcc.master.stock_api;
 /**
  * Classe abstraite mère de représentation des objets en base de données.
  * Tous les objets qui viennent de la base de données hérite de cette classe.
- * @author Arnaud -- Sebastien
+ * @author Arnaud BIRCHLER et Sebastien GUIGNARD
  */
+
 public abstract class Item
 {
 
@@ -14,7 +15,8 @@ public abstract class Item
     protected long id;
 
     /**
-     * @return L'identifiant unique
+     * retourne l'id'(get).
+     * @return
      * */
     public long getId()
     {
@@ -22,8 +24,9 @@ public abstract class Item
     }
 
     /**
+     * set l'id'(set).
      * @param id
-     * Le nouvel identifiant.
+     *
      * */
     public void setId( long id )
     {
