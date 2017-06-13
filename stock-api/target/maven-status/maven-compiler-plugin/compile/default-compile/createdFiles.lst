@@ -1,0 +1,4 @@
+fr\aifcc\master\stock_api\StockInterface.class
+fr\aifcc\master\stock_api\Denree.class
+fr\aifcc\master\stock_api\Item.class
+fr\aifcc\master\stock_api\StockException.class
